@@ -65,6 +65,10 @@ module CircleCi
       end
     end
 
+    def sanitize_pagination(options={})
+      options.slice!(:limit, :offset)
+    end
+
   end
 
 end

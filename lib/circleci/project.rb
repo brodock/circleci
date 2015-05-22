@@ -24,8 +24,8 @@ module CircleCi
     # @param project  [String] - Name of project
     # @return         [CircleCi::Response] - Response object
 
-    def self.recent_builds username, project
-      CircleCi.http.get "/project/#{username}/#{project}"
+    def self.recent_builds username, project, options={}
+      CircleCi.http.get "/project/#{username}/#{project}", CircleCI.http.sanitize_pagination(options)
     end
 
     ##
@@ -49,8 +49,8 @@ module CircleCi
     # @param branch   [String] - Name of branch
     # @return         [CircleCi::Response] - Response object
 
-    def self.recent_builds_branch username, project, branch
-      CircleCi.http.get "/project/#{username}/#{project}/tree/#{branch}"
+    def self.recent_builds_branch username, project, branch, options={}
+      CircleCi.http.get "/project/#{username}/#{project}/tree/#{branch}", CircleCI.http.sanitize_pagination(options)
     end
 
     ##
